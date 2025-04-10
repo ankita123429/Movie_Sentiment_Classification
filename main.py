@@ -40,7 +40,7 @@ Review_as_input= st.text_area('Movie Review')
 if st.button('classify'):
    preprocesstext=preprocess_text(Review_as_input)
    
-   prediction=load_model.predict(preprocesstext)   
+   prediction=model1.predict(preprocesstext)   
    sentiment ="positive" if prediction[0][0]>0.5  else "Negative"
    st.write(f'sentiment,{sentiment}')
    st.write(f'prediction score:,{prediction[0][0]}')
