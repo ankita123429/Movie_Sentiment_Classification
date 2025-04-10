@@ -21,6 +21,7 @@ def decode_review(encoded_review):
 from tensorflow.keras.preprocessing.sequence import pad_sequences # Import the specific pad_sequences
 def preprocess_text(text):
   words=text.lower().split()
+  max_len=500
   encoded_review=[(word_index.get(word,2) +3) for word in words]
   padded_review=pad_sequences([encoded_review],maxlen=max_len)
   return padded_review
@@ -33,7 +34,7 @@ def predict_sentiment(review):
 
 
 st.title("Movie Review Sentiment Analysis")
-st.write("enter the movie review to classify whether it is positive or negative")
+st.write("Enter the movie review to classify whether it is positive or negative")
 
 Review_as_input= st.text_area('Movie Review')
 if st.button('classify'):
